@@ -25,7 +25,7 @@ export const pt: Dictionary = {
     ctaWork: 'Ver estudos de caso',
     ctaResume: 'Currículo',
     resumeHref: '/resume-pt.pdf',
-    resumeLabel: 'Baixar currículo (PDF, português)',
+    resumeLabel: 'Currículo, baixar PDF em português',
     metricsLabel: 'Destaques',
     metrics: [
       { value: '94%', label: 'dos leads do WhatsApp atendidos por bots que criei' },

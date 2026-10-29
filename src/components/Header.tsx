@@ -36,7 +36,7 @@ export function Header({ lang, t, pathname }: Props) {
           <Link
             href={switchLangPath(pathname, otherLang)}
             hrefLang={dictionaries[otherLang].meta.htmlLang}
-            aria-label={t.nav.switchLang}
+            aria-label={`${t.nav.switchLangShort}, ${t.nav.switchLang}`}
             title={t.nav.switchLang}
             className={styles.lang}
           >

@@ -1,5 +1,6 @@
 import { ArrowDown, DownloadSimple } from '@phosphor-icons/react'
 import { useState } from 'react'
+import photoSmall from '../assets/profile-240.jpg'
 import photo from '../assets/profile-800.jpg'
 import type { Dictionary } from '../content/dictionaries/index.ts'
 import { profile } from '../content/profile.ts'
@@ -33,7 +34,16 @@ export function Hero({ lang, t }: { lang: Lang; t: Dictionary }) {
             </a>
           </div>
         </div>
-        <img src={photo} alt={h.photoAlt} width={800} height={979} className={styles.photo} fetchPriority="high" />
+        <img
+          src={photo}
+          srcSet={`${photoSmall} 240w, ${photo} 800w`}
+          sizes="(min-width: 900px) 344px, 104px"
+          alt={h.photoAlt}
+          width={800}
+          height={979}
+          className={styles.photo}
+          fetchPriority="high"
+        />
       </div>
       <Metrics items={h.metrics} label={h.metricsLabel} />
     </section>

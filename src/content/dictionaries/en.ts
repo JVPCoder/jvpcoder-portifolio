@@ -24,7 +24,7 @@ export const en = {
     ctaWork: 'See case studies',
     ctaResume: 'Resume',
     resumeHref: '/resume-en.pdf',
-    resumeLabel: 'Download resume (PDF, English)',
+    resumeLabel: 'Resume, download PDF in English',
     metricsLabel: 'Highlights',
     metrics: [
       { value: '94%', label: 'of WhatsApp leads handled by bots I built' },
