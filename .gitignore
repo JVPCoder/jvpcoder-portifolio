@@ -1,0 +1,40 @@
+# Dependencies and build output
+node_modules
+dist
+dist-ssr
+*.tsbuildinfo
+
+# Source resume PDFs (the copies the site serves live in public/)
+repo/
+# Full-size original photo (the site uses profile-800.jpg)
+src/assets/profile.jpg
+# Planning docs from the build process
+SPEC.md
+docs/
+plans/
+tasks/
+
+# Environment and tooling
+.env*
+*.local
+.vercel
+.playwright-cli/
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Editor and OS files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?

@@ -1,0 +1,83 @@
+.intro {
+  max-width: 62ch;
+  margin-top: -16px;
+  color: var(--text-muted);
+}
+
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-block: 20px 32px;
+}
+
+.groups {
+  display: grid;
+  gap: 1px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--border);
+  overflow: hidden;
+}
+
+@media (min-width: 640px) {
+  .groups {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .groups {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.group {
+  display: grid;
+  align-content: start;
+  gap: 16px;
+  padding: 24px;
+  background: var(--surface);
+}
+
+.groupTitle {
+  font-size: 1rem;
+  letter-spacing: -0.01em;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  min-height: 32px;
+  padding: 4px 12px;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  text-decoration: none;
+}
+
+/* Solid border + arrow = production. Dashed + muted = personal projects. Not color alone. */
+.production {
+  border: 1px solid var(--accent);
+  color: var(--text);
+  transition: background-color var(--dur-hover) ease;
+}
+
+a.production:hover {
+  background: var(--accent-soft);
+}
+
+.personal {
+  border: 1px dashed var(--text-muted);
+  color: var(--text-muted);
+}

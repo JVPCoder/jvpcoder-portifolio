@@ -1,0 +1,99 @@
+.figure {
+  margin: 0;
+  padding: 24px 16px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+}
+
+.svg {
+  width: 100%;
+  max-width: 560px;
+  height: auto;
+  margin-inline: auto;
+  font-family: var(--font-sans);
+}
+
+.box {
+  fill: var(--surface-muted);
+  stroke: var(--border);
+  stroke-width: 1;
+}
+
+.boxAccent {
+  fill: var(--accent-soft);
+  stroke: var(--accent);
+  stroke-width: 1;
+}
+
+.title {
+  fill: var(--text);
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.sub {
+  fill: var(--text-muted);
+  font-size: 13.5px;
+}
+
+.line {
+  fill: none;
+  stroke: var(--text-muted);
+  stroke-width: 1.5;
+}
+
+.lineAccent {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 2;
+}
+
+.head {
+  fill: var(--text-muted);
+}
+
+.headAccent {
+  fill: var(--accent);
+}
+
+.badge {
+  fill: var(--bg);
+  stroke: var(--accent);
+  stroke-width: 1;
+}
+
+.badgeText {
+  fill: var(--accent);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+/*
+  Build the flow in reading order once the figure scrolls into view: each box (with its outgoing arrow)
+  appears 90ms after the previous one, so the motion explains direction. The frame itself stays still.
+*/
+.figure[data-reveal]:not([data-revealed]) {
+  opacity: 1;
+  transform: none;
+}
+
+@keyframes node-in {
+  from {
+    opacity: 0;
+    transform: translateY(calc(var(--rise) * 0.5));
+  }
+}
+
+.node {
+  transform-box: fill-box;
+}
+
+.figure:not([data-revealed]) .node {
+  opacity: 0;
+}
+
+.figure[data-revealed] .node {
+  animation: node-in 400ms var(--ease) both;
+  animation-delay: calc(var(--i) * 90ms);
+}

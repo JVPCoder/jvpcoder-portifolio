@@ -1,0 +1,31 @@
+.panel {
+  display: grid;
+  gap: 16px;
+  padding: 32px 24px;
+  border-radius: var(--radius);
+  background: var(--accent-soft);
+}
+
+@media (min-width: 768px) {
+  .panel {
+    padding: 56px;
+  }
+}
+
+.title {
+  max-width: 22ch;
+  font-size: clamp(1.75rem, 1.3rem + 1.8vw, 2.75rem);
+}
+
+.body {
+  max-width: 52ch;
+  color: var(--text-muted);
+  font-size: 1.0625rem;
+}
+
+.ctas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 8px;
+}

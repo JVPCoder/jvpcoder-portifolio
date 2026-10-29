@@ -1,0 +1,77 @@
+// Source of truth for UI string keys. pt.ts must match this shape.
+export const en = {
+  meta: {
+    title: 'João Vitor Pires | Full Stack Software Engineer',
+    htmlLang: 'en',
+  },
+  skipLink: 'Skip to content',
+  footer: {
+    rights: 'All rights reserved.',
+  },
+  nav: {
+    label: 'Main',
+    work: 'Case studies',
+    stack: 'Stack',
+    experience: 'Experience',
+    contact: 'Contact',
+    switchLang: 'Ver em português',
+    switchLangShort: 'PT',
+  },
+  home: {
+    role: 'Full Stack Software Engineer',
+    intro: 'I build web products that hold up in production, with React, Laravel and Node.js. Open to remote and relocation.',
+    photoAlt: 'Portrait of João Vitor Pires',
+    ctaWork: 'See case studies',
+    ctaResume: 'Resume',
+    resumeHref: '/resume-en.pdf',
+    resumeLabel: 'Download resume (PDF, English)',
+    metricsLabel: 'Highlights',
+    metrics: [
+      { value: '94%', label: 'of WhatsApp leads handled by bots I built' },
+      { value: '~1s', label: 'faster average API response in e-commerce' },
+      { value: '30%', label: 'more system stability in checkout' },
+      { value: '40%', label: 'less manual work through automation' },
+    ],
+    contactTitle: 'Open to full stack roles, remote or relocation.',
+    contactBody: 'Email is the fastest way to reach me. You can also find me on LinkedIn.',
+    contactCta: 'Get in touch',
+  },
+  sections: {
+    readCase: 'Read case study',
+    education: 'Education',
+    degree: 'B.Sc. Systems Analysis and Development',
+    school: 'Universidade Tecnológica Federal do Paraná (UTFPR)',
+    degreeDate: '12/2025',
+    stackIntro: 'Solid chips were used in production and link to the case study that shows it. Dashed chips are tools I have used in personal projects and can bring to production when needed.',
+    production: 'Used in production',
+    personal: 'Personal projects',
+    groups: {
+      frontend: 'Front-End',
+      backend: 'Back-End',
+      databases: 'Databases',
+      devops: 'DevOps & Tools',
+      ai: 'AI & Automation',
+      practices: 'Practices',
+    },
+  },
+  caseStudy: {
+    back: 'All case studies',
+    role: 'Role',
+    stack: 'Stack',
+    context: 'Context',
+    problem: 'The problem',
+    diagnosis: 'Diagnosis',
+    architecture: 'Architecture',
+    decisions: 'Key decisions',
+    results: 'Results',
+    next: "What I'd do next",
+    nextCase: 'Next case study',
+  },
+  notFound: {
+    title: 'Page not found',
+    body: 'This page does not exist or was moved.',
+    back: 'Back to home',
+  },
+}
+
+export type Dictionary = typeof en

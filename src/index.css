@@ -1,0 +1,255 @@
+@import '@fontsource-variable/geist';
+@import '@fontsource-variable/geist-mono';
+
+/*
+  Design tokens. One accent (green), cool zinc neutrals, light/dark via system.
+  Shape rule: interactive controls are pills, surfaces use --radius (12px).
+*/
+:root {
+  color-scheme: light dark;
+
+  --bg: #fafafa;
+  --surface: #ffffff;
+  --surface-muted: #f1f1f3;
+  --border: #e4e4e7;
+  --text: #18181b;
+  --text-muted: #52525b;
+  --accent: #13795b;
+  --accent-contrast: #ffffff;
+  --accent-soft: #e3f3ec;
+  --focus: #13795b;
+  --shadow: 0 1px 2px rgb(24 24 27 / 0.04), 0 8px 24px rgb(24 24 27 / 0.06);
+
+  --font-sans: 'Geist Variable', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: 'Geist Mono Variable', ui-monospace, 'SFMono-Regular', monospace;
+
+  --radius: 12px;
+  --radius-pill: 999px;
+  --container: 1120px;
+  --gutter: 16px;
+  --header-h: 64px;
+  --ease: cubic-bezier(0.16, 1, 0.3, 1); /* strong ease-out: entrances, presses, lifts */
+
+  /* Motion. All movement goes through --rise/--lift so reduced motion can zero it in one place. */
+  --dur-press: 160ms;
+  --dur-hover: 200ms;
+  --dur-page: 220ms;
+  --dur-enter: 500ms;
+  --stagger: 60ms;
+  --rise: 12px;
+  --lift: -2px;
+}
+
+@media (min-width: 768px) {
+  :root {
+    --gutter: 32px;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0f0f11;
+    --surface: #17171a;
+    --surface-muted: #1f1f23;
+    --border: #2a2a2f;
+    --text: #ececee;
+    --text-muted: #a1a1aa;
+    --accent: #5fd4a8;
+    --accent-contrast: #0b2a1f;
+    --accent-soft: #15302a;
+    --focus: #5fd4a8;
+    --shadow: 0 1px 2px rgb(0 0 0 / 0.3), 0 8px 24px rgb(0 0 0 / 0.35);
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--header-h) + 16px);
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  min-height: 100dvh;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh;
+}
+
+#main {
+  flex: 1;
+}
+
+h1,
+h2,
+h3 {
+  margin: 0;
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+  font-weight: 600;
+  text-wrap: balance;
+}
+
+p {
+  margin: 0;
+  text-wrap: pretty;
+}
+
+a {
+  color: inherit;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+.container {
+  width: 100%;
+  max-width: var(--container);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+/* Buttons: pill shape, one primary per section. */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 10px 20px;
+  border: 1px solid transparent;
+  border-radius: var(--radius-pill);
+  font-size: 0.9375rem;
+  font-weight: 500;
+  white-space: nowrap;
+  text-decoration: none;
+  transition:
+    background-color var(--dur-hover) ease,
+    border-color var(--dur-hover) ease,
+    color var(--dur-hover) ease,
+    transform var(--dur-press) var(--ease);
+}
+
+.btn:active {
+  transform: translateY(1px) scale(0.98);
+}
+
+.btn-primary {
+  background: var(--text);
+  color: var(--bg);
+}
+
+.btn-primary:hover {
+  background: var(--accent);
+  color: var(--accent-contrast);
+}
+
+.btn-secondary {
+  border-color: var(--border);
+  background: var(--surface);
+  color: var(--text);
+}
+
+.btn-secondary:hover {
+  border-color: var(--accent);
+}
+
+.section {
+  padding-top: 96px;
+}
+
+.section-title {
+  margin-bottom: 32px;
+  font-size: clamp(1.75rem, 1.4rem + 1.4vw, 2.5rem);
+}
+
+.skip-link {
+  position: absolute;
+  left: var(--gutter);
+  top: -100px;
+  z-index: 100;
+  padding: 8px 16px;
+  border-radius: var(--radius-pill);
+  background: var(--accent);
+  color: var(--accent-contrast);
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.skip-link:focus {
+  top: 12px;
+}
+
+/* Entrances: fade + rise. Under reduced motion --rise is 0, so they become plain fades. */
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(var(--rise));
+  }
+}
+
+/* Page change: shorter travel than section entrances. */
+@keyframes page-in {
+  from {
+    opacity: 0;
+    transform: translateY(calc(var(--rise) * 0.66));
+  }
+}
+
+/* For LCP elements: never start invisible, only settle into place. */
+@keyframes rise-only {
+  from {
+    transform: translateY(var(--rise));
+  }
+}
+
+.page-enter {
+  animation: page-in var(--dur-page) var(--ease) both;
+}
+
+[data-reveal] {
+  transition:
+    opacity var(--dur-enter) var(--ease),
+    transform var(--dur-enter) var(--ease);
+  transition-delay: calc(var(--i, 0) * var(--stagger));
+}
+
+[data-reveal]:not([data-revealed]) {
+  opacity: 0;
+  transform: translateY(var(--rise));
+}
+
+/* Reduced motion: fewer and gentler, not zero. Movement off, fades and color changes stay. */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  :root {
+    --rise: 0px;
+    --lift: 0px;
+  }
+}
